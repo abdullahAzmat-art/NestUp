@@ -1,0 +1,309 @@
+/* ============================================================
+   NestUp — auth.css (Premium Split Layout)
+   Styles for Login and Register pages
+   ============================================================ */
+
+/* ── Split Layout Wrapper ───────────────────────────────── */
+.auth-page {
+  display: flex;
+  min-height: calc(100vh - var(--navbar-height));
+  background: var(--color-white);
+}
+
+/* ── Left Side: Form Area ───────────────────────────────── */
+.auth-section-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  max-width: 600px; /* Optional: limit form area width to keep image larger */
+}
+
+@media (min-width: 1024px) {
+  .auth-section-form {
+    flex: 0 0 500px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .auth-section-form {
+    flex: 0 0 600px;
+  }
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.auth-header {
+  margin-bottom: 40px;
+}
+
+.auth-header h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--color-text);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.auth-header p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+/* ── Form Elements ──────────────────────────────────────── */
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.form-input-wrap {
+  position: relative;
+}
+
+.form-input-wrap .input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: color var(--transition);
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: #9CA3AF;
+}
+
+.form-input:focus {
+  background: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(29,158,117,.12);
+}
+
+.form-input:focus + .input-icon,
+.form-input-wrap:focus-within .input-icon {
+  color: var(--color-primary);
+}
+
+/* Error states */
+.form-input.has-error {
+  border-color: #ef4444;
+}
+
+.form-input.has-error:focus {
+  box-shadow: 0 0 0 4px rgba(239,68,68,.12);
+}
+
+/* ── Options row (Remember me & Forgot pass) ────────────── */
+.auth-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.remember-me input[type="checkbox"],
+.terms-checkbox input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  background: var(--color-white);
+}
+
+.remember-me input[type="checkbox"]:checked,
+.terms-checkbox input[type="checkbox"]:checked {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.remember-me input[type="checkbox"]:checked::after,
+.terms-checkbox input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.remember-me span,
+.terms-checkbox span {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.forgot-password {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.forgot-password:hover {
+  color: var(--color-dark-green);
+  text-decoration: underline;
+}
+
+/* ── Submit Button ──────────────────────────────────────── */
+.auth-submitBtn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(29,158,117,.2);
+}
+
+.auth-submitBtn:hover {
+  box-shadow: 0 6px 14px rgba(29,158,117,.3);
+}
+
+/* ── Footer Link ────────────────────────────────────────── */
+.auth-footer {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.auth-footer a {
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+  margin-left: 6px;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+  color: var(--color-dark-green);
+}
+
+/* ── Right Side: Image Area ─────────────────────────────── */
+.auth-section-image {
+  flex: 1;
+  display: none; /* Hidden on mobile */
+  position: relative;
+  background-color: var(--color-primary);
+}
+
+/* Base Image with placeholder via Unsplash (Hostel/Cozy setup) */
+.auth-image-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=2069&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Cool green gradient overlay */
+.auth-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(29, 158, 117, 0.8) 0%, rgba(15, 110, 86, 0.9) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.auth-image-content {
+  max-width: 400px;
+}
+
+.auth-image-content h2 {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.auth-image-content p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.auth-quote-mark {
+  font-size: 4rem;
+  color: var(--color-amber);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .auth-section-image {
+    display: block; /* Show image on desktop */
+  }
+}
+
+@media (max-width: 767px) {
+  .auth-page {
+    flex-direction: column;
+    padding: 20px;
+    background: var(--color-bg);
+  }
+  
+  .auth-section-form {
+    padding: 30px 20px;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+    margin-top: 20px;
+  }
+}
