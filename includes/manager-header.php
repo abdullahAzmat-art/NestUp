@@ -1,10 +1,9 @@
-<?php require_once 'db.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - NestUp</title>
+    <title>Manager Dashboard - NestUp</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,39 +13,32 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Admin Stylesheet -->
+    <!-- Admin/Manager Stylesheet (Using same as admin for consistency) -->
     <link rel="stylesheet" href="/NestUp/css/style.css">
     <link rel="stylesheet" href="/NestUp/css/admin.css">
+    <link rel="stylesheet" href="/NestUp/css/manager.css">
 </head>
 <body>
 
 <div class="admin-wrapper">
     <!-- Sidebar -->
-    <aside class="admin-sidebar" id="admin-sidebar">
+    <aside class="admin-sidebar" id="admin-sidebar" style="background: linear-gradient(180deg, #166534 0%, #064e3b 100%);">
         <div class="sidebar-logo">
-            NestUp <span style="color:#fff; font-weight:400; font-size:0.8rem;">Admin</span>
+            NestUp <span style="color:#fff; font-weight:400; font-size:0.8rem;">Manager</span>
         </div>
         
         <nav class="sidebar-nav">
-            <a href="/NestUp/admin/index.php" class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'active' : ''; ?>">
+            <a href="/NestUp/hostel-manager/index.php" class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'active' : ''; ?>">
                 <i class="fas fa-chart-line"></i>
                 Dashboard
             </a>
-            <a href="/NestUp/admin/hostels.php" class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'hostels.php') ? 'active' : ''; ?>">
+            <a href="/NestUp/hostel-manager/my-hostels.php" class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'my-hostels.php') ? 'active' : ''; ?>">
                 <i class="fas fa-building"></i>
-                Verify Hostels
+                My Hostels
             </a>
-            <a href="/NestUp/admin/add-hostel.php" class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'add-hostel.php') ? 'active' : ''; ?>">
+            <a href="/NestUp/hostel-manager/add-hostel.php" class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'add-hostel.php') ? 'active' : ''; ?>">
                 <i class="fas fa-plus-circle"></i>
                 Add New Hostel
-            </a>
-            <a href="/NestUp/admin/users.php" class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'users.php') ? 'active' : ''; ?>">
-                <i class="fas fa-users"></i>
-                Manage Users
-            </a>
-            <a href="/NestUp/admin/reviews.php" class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'reviews.php') ? 'active' : ''; ?>">
-                <i class="fas fa-star"></i>
-                Monitor Reviews
             </a>
         </nav>
         
@@ -69,20 +61,19 @@
                 <h2><?php 
                     $page = basename($_SERVER['PHP_SELF']);
                     switch($page) {
-                        case 'hostels.php': echo 'Hostel Verification'; break;
-                        case 'users.php': echo 'User Management'; break;
-                        case 'reviews.php': echo 'Review Moderation'; break;
-                        default: echo 'Admin Dashboard';
+                        case 'my-hostels.php': echo 'My Hostel Listings'; break;
+                        case 'add-hostel.php': echo 'Add New Hostel'; break;
+                        default: echo 'Manager Dashboard';
                     }
                 ?></h2>
             </div>
             
             <div class="admin-profile">
                 <div class="admin-info" style="text-align:right;">
-                    <div style="font-weight:600; font-size:0.9rem;">Admin User</div>
-                    <div style="font-size:0.75rem; color:var(--admin-text-muted);">Main Administrator</div>
+                    <div style="font-weight:600; font-size:0.9rem;">Hostel Owner</div>
+                    <div style="font-size:0.75rem; color:var(--admin-text-muted);">Manager Account</div>
                 </div>
-                <div class="admin-avatar">AD</div>
+                <div class="admin-avatar" style="background: #166534;">HM</div>
             </div>
         </header>
         

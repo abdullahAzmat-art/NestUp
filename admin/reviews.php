@@ -18,7 +18,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     }
 }
 
-require_once '../includes/admin-header.php'; 
+require_once '../includes/header.php'; 
 ?>
 
 <?php if(isset($msg)): ?>
@@ -81,4 +81,4 @@ require_once '../includes/admin-header.php';
     </div>
 </div>
 
-<?php require_once '../includes/admin-footer.php'; ?>
+<?php require_once '../includes/footer.php'; ?>

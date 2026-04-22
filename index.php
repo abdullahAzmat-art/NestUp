@@ -105,7 +105,7 @@
 
     <div class="cards-grid">
 
-      <!-- Card 1: Al-Noor Boys Hostel -->
+      <!-- Card 1: Al-Noor Boys Hostel
       <article class="hostel-card" id="featured-card-1" aria-label="Al-Noor Boys Hostel">
         <div class="card-image-wrap">
           <img
@@ -146,7 +146,7 @@
             <a href="/NestUp/hostel-detail.php?id=1" class="btn-primary" id="view-hostel-1">View Details</a>
           </div>
         </div>
-      </article>
+      </article> -->
 
       <!-- Card 2: Green View Hostel -->
       <article class="hostel-card" id="featured-card-2" aria-label="Green View Hostel">

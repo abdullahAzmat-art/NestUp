@@ -1,5 +1,5 @@
 <?php 
-require_once '../includes/admin-header.php'; 
+require_once '../includes/header.php'; 
 
 // Fetch basic stats
 $stats = [
@@ -114,4 +114,4 @@ try {
     </div>
 </div>
 
-<?php require_once '../includes/admin-footer.php'; ?>
+<?php require_once '../includes/footer.php'; ?>

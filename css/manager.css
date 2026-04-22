@@ -1,0 +1,183 @@
+/* ============================================================
+   NestUp — manager.css
+   Premium styling for the Hostel Manager module
+   ============================================================ */
+
+:root {
+    --mgr-primary: #1D9E75;
+    --mgr-secondary: #0F6E56;
+    --mgr-bg: #F8FAFC;
+    --mgr-sidebar: #064E3B;
+    --mgr-card-bg: #FFFFFF;
+    --mgr-text: #1E293B;
+    --mgr-text-muted: #64748B;
+    --mgr-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    --mgr-glass: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Global Enhancements ─────────────────────────────────── */
+body {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    background-color: var(--mgr-bg);
+}
+
+.admin-wrapper {
+    background-color: var(--mgr-bg);
+}
+
+/* ── Sidebar Redesign ────────────────────────────────────── */
+.admin-sidebar {
+    background: linear-gradient(180deg, var(--mgr-sidebar) 0%, #022C22 100%);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+}
+
+.sidebar-logo {
+    color: #fff;
+    letter-spacing: -0.5px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-item {
+    margin: 4px 12px;
+    border-radius: 10px;
+    border-left: none;
+    padding: 14px 18px;
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateX(5px);
+}
+
+.nav-item.active {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav-item i {
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover i {
+    transform: scale(1.1);
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.admin-header {
+    background: var(--mgr-glass);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.admin-avatar {
+    box-shadow: 0 0 0 4px rgba(29, 158, 117, 0.1);
+}
+
+/* ── Stat Cards ──────────────────────────────────────────── */
+.stat-card {
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.stat-icon {
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+    transform: rotate(10deg) scale(1.1);
+}
+
+/* ── Form Styling ─────────────────────────────────────────── */
+.admin-card {
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: var(--mgr-shadow);
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--mgr-text);
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    background: #F8FAFC;
+    color: var(--mgr-text);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--mgr-primary);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(29, 158, 117, 0.1);
+}
+
+/* ── Table Styling ────────────────────────────────────────── */
+.admin-table th {
+    background: #F1F5F9;
+    color: #475569;
+    font-weight: 700;
+}
+
+.admin-table td {
+    color: #334155;
+    vertical-align: middle;
+}
+
+.admin-table tr {
+    transition: background 0.2s;
+}
+
+/* ── Status Badges ────────────────────────────────────────── */
+.status-badge {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn-primary {
+    background: var(--mgr-primary);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--mgr-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(29, 158, 117, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--mgr-primary);
+    color: var(--mgr-primary);
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: var(--mgr-primary);
+    color: #fff;
+}
