@@ -1,27 +1,14 @@
 <?php
-/**
- * NestUp - Database Connection Configuration
- */
+// This securely connects PHP to your XAMPP MySQL database
+$host = 'localhost';
+$dbname = 'nestup';
+$username = 'root'; // XAMPP default
+$password = '';     // XAMPP default is blank
 
-$db_host = 'localhost';
-$db_user = 'root';
-$db_pass = '';
-$db_name = 'nestup';
-
-// Create connection
-$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
-
-// Check connection
-if ($conn->connect_error) {
-    // Detailed error logging (could be replaced with a cleaner error for production)
-    die("Database connection failed: " . $conn->connect_error);
-}
-
-// Set charset to utf8mb4 for full emoji/unicode support
-$conn->set_charset("utf8mb4");
-
-// Start session globally if not already started
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    die("Database Connection Failed: " . $e->getMessage());
 }
 ?>

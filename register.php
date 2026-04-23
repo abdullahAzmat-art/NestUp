@@ -1,3 +1,60 @@
+<?php
+// 1. Start the session
+session_start();
+
+// 2. Connect to the database
+require_once 'includes/db.php';
+
+// 3. Check if the green "Sign Up" button was clicked
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // Grab all the data from Abdullah's text fields
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    // Rule 1: Make sure the user didn't make a typo in their password
+    if ($password !== $confirm_password) {
+        echo "<script>alert('Passwords do not match! Please try again.');</script>";
+    } else {
+        
+        // Rule 2: Check if this email is already registered in our database
+        $checkEmail = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $checkEmail->execute(['email' => $email]);
+        
+        if ($checkEmail->rowCount() > 0) {
+            // Email is already in the database!
+            echo "<script>alert('This email is already registered. Please go to the Log In page.');</script>";
+        } else {
+            
+            // SUCCESS PATH: Everything is correct!
+            
+            // 1. Encrypt the password mathematically
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $role = 'student'; // Everyone registering through this form is a student
+            
+            // 2. Insert the brand new user into your XAMPP database
+            $insertQuery = $pdo->prepare("INSERT INTO users (name, email, password, role) VALUES (:name, :email, :password, :role)");
+            
+            if ($insertQuery->execute(['name' => $name, 'email' => $email, 'password' => $hashed_password, 'role' => $role])) {
+                
+                // 3. Show success message and automatically redirect to the login page!
+                echo "<script>
+                        alert('Registration Successful! Welcome to NestUp. Please log in.');
+                        window.location.href = 'login.php';
+                      </script>";
+                exit();
+            } else {
+                echo "<script>alert('Database error. Could not register user.');</script>";
+            }
+        }
+    }
+}
+?>
+
+
+
 <?php require_once 'includes/header.php'; ?>
 
 <!-- Include Authentication CSS -->

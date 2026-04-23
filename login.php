@@ -1,11 +1,59 @@
+<?php
+// 1. Bring in your database connection
+require_once 'includes/db.php';
+
+// 2. Check if the green "Log In" button was clicked
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // Grab what the user typed in the boxes
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Search the database for this email
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt->execute(['email' => $email]);
+    $user = $stmt->fetch();
+
+    // Verify the user exists AND the password is correct
+    if ($user && password_verify($password, $user['password'])) {
+        
+        // SUCCESS! Grab the data securely from the database
+        $id = $user['id'];
+        $name = $user['name'];
+        $role = $user['role'];
+
+        // Use JAVASCRIPT to save to Local Storage and redirect!
+        echo "<script>
+            // Save data to the browser's Local Storage
+            localStorage.setItem('user_id', '$id');
+            localStorage.setItem('user_name', '$name');
+            localStorage.setItem('user_role', '$role');
+
+            // Show success message
+            alert('Login Successful! Welcome back, $name');
+
+            // Redirect based on the role
+            if ('$role' === 'admin') {
+                window.location.href = 'admin_dashboard.php';
+            } else {
+                window.location.href = 'index.php';
+            }
+        </script>";
+        exit();
+        
+    } else {
+        // Failure! Show an error message
+        echo "<script>alert('Incorrect email or password. Please try again.');</script>";
+    }
+}
+?>
+
 <?php require_once 'includes/header.php'; ?>
 
-<!-- Include Authentication CSS -->
 <link rel="stylesheet" href="/NestUp/css/auth.css">
 
 <main class="auth-page">
   
-  <!-- LEFT SIDE: Form -->
   <section class="auth-section-form">
     <div class="auth-container">
       
@@ -14,10 +62,8 @@
         <p>Log in to your NestUp student account</p>
       </div>
 
-      <!-- Login Form -->
       <form action="/NestUp/login.php" method="POST" id="login-form">
         
-        <!-- Email Field -->
         <div class="form-group">
           <label for="email" class="form-label">Email Address</label>
           <div class="form-input-wrap">
@@ -37,7 +83,6 @@
           </div>
         </div>
 
-        <!-- Password Field -->
         <div class="form-group">
           <label for="password" class="form-label">Password</label>
           <div class="form-input-wrap">
@@ -57,7 +102,6 @@
           </div>
         </div>
 
-        <!-- Options Row -->
         <div class="auth-options">
           <label class="remember-me">
             <input type="checkbox" name="remember" id="remember">
@@ -66,14 +110,12 @@
           <a href="/NestUp/forgot-password.php" class="forgot-password">Forgot Password?</a>
         </div>
 
-        <!-- Submit Button -->
         <button type="submit" class="btn-primary auth-submitBtn" aria-label="Log In">
           Log In
         </button>
 
       </form>
 
-      <!-- Footer Links -->
       <div class="auth-footer">
         Don't have an account? <a href="/NestUp/register.php">Create one</a>
       </div>
@@ -81,7 +123,6 @@
     </div>
   </section>
 
-  <!-- RIGHT SIDE: Split Image -->
   <section class="auth-section-image" aria-hidden="true">
     <div class="auth-image-bg" style="background-image: url('/NestUp/assets/login-bg.png');"></div>
     <div class="auth-image-overlay">
